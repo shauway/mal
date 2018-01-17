@@ -1,27 +1,70 @@
 apply plugin: 'com.android.application'
 
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(rootProject.file("keystore.properties")))
+
 android {
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['release.keyAlias']
+            keyPassword keystoreProperties['release.keyPassword']
+            storeFile file(keystoreProperties['release.storeFile'])
+            storePassword keystoreProperties['release.storePassword']
+        }
+        debug {
+            keyAlias keystoreProperties['debug.keyAlias']
+            keyPassword keystoreProperties['debug.keyPassword']
+            storeFile file(keystoreProperties['debug.storeFile'])
+            storePassword keystoreProperties['debug.storePassword']
+        }
+    }
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.github.shauway.mal"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 101
+        versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [HOCKEYAPP_APP_ID: "147c3821e77d443884e6ff2422aab4f4"]
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            pseudoLocalesEnabled true
+        }
+        debug {
+            signingConfig signingConfigs.release
         }
     }
 }
 
+apply plugin: 'de.felixschulze.gradle.hockeyapp'
+def hockeyappProperties = new Properties()
+hockeyappProperties.load(new FileInputStream(project.file("hockeyapp.properties")))
+hockeyapp {
+    apiToken hockeyappProperties["apiToken"]
+    notes hockeyappProperties["notes"]
+    variantToApplicationId = [
+            "debug"  : "147c3821e77d443884e6ff2422aab4f4",
+            "release": "147c3821e77d443884e6ff2422aab4f4"
+    ]
+}
+
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.3'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.3'
+    implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
+    compile project(path: ':permission')
 }
