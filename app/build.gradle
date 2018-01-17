@@ -1,7 +1,10 @@
 apply plugin: 'com.android.application'
 
 def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(rootProject.file("keystore.properties")))
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
 
 android {
     signingConfigs {
@@ -32,25 +35,32 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            if (keystorePropertiesFile.exists()) {
+                signingConfig signingConfigs.release
+            }
             pseudoLocalesEnabled true
         }
         debug {
-            signingConfig signingConfigs.release
+            if (keystorePropertiesFile.exists()) {
+                signingConfig signingConfigs.debug
+            }
         }
     }
 }
 
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
 def hockeyappProperties = new Properties()
-hockeyappProperties.load(new FileInputStream(project.file("hockeyapp.properties")))
-hockeyapp {
-    apiToken hockeyappProperties["apiToken"]
-    notes hockeyappProperties["notes"]
-    variantToApplicationId = [
-            "debug"  : "147c3821e77d443884e6ff2422aab4f4",
-            "release": "147c3821e77d443884e6ff2422aab4f4"
-    ]
+def hockeyappPropertiesFile = project.file("hockeyapp.properties")
+if (hockeyappPropertiesFile.exists()) {
+    hockeyappProperties.load(new FileInputStream(hockeyappPropertiesFile))
+    hockeyapp {
+        apiToken hockeyappProperties["apiToken"]
+        notes hockeyappProperties["notes"]
+        variantToApplicationId = [
+                "debug"  : "147c3821e77d443884e6ff2422aab4f4",
+                "release": "147c3821e77d443884e6ff2422aab4f4"
+        ]
+    }
 }
 
 dependencies {
