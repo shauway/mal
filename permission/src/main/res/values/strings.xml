@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">permission</string>
+    <string name="permission_manager_activity_title_name">请求开启所需权限</string>
+    <string name="btn_quit">退出</string>
+    <string name="btn_manual_grant_permissions">去开启</string>
+    <string name="btn_request_permissions">立即开启</string>
+    <string name="msg_manual_grant_permissions">您需要手动到系统设置中开启所需权限</string>
+</resources>
