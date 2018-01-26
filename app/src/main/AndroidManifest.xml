@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.github.shauway.mal">
 
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -27,6 +26,7 @@
         </activity>
         <activity android:name=".demo.permission.PermissionDemoActivity" />
         <activity android:name=".permission.PermissionManagerActivity" />
+        <activity android:name=".demo.barscan.BarscanDemoActivity" />
     </application>
 
 </manifest>
