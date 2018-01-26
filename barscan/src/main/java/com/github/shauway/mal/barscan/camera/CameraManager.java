@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.shauway.barscan.camera;
+package com.github.shauway.mal.barscan.camera;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -25,8 +25,9 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
-import com.github.shauway.barscan.camera.open.OpenCamera;
-import com.github.shauway.barscan.camera.open.OpenCameraInterface;
+import com.github.shauway.mal.barscan.CaptureFragment;
+import com.github.shauway.mal.barscan.camera.open.OpenCamera;
+import com.github.shauway.mal.barscan.camera.open.OpenCameraInterface;
 import com.google.zxing.PlanarYUVLuminanceSource;
 
 import java.io.IOException;
@@ -173,7 +174,7 @@ public final class CameraManager {
     }
 
     /**
-     * Convenience method for {@link com.github.shauway.barscan.CaptureFragment}
+     * Convenience method for {@link CaptureFragment}
      *
      * @param newSetting if {@code true}, light should be turned on if currently off. And vice versa.
      */

@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.github.shauway.barscan;
+package com.github.shauway.mal.barscan;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.view.View;
 
-import com.github.shauway.barscan.camera.CameraManager;
+import com.github.shauway.mal.barscan.camera.CameraManager;
 
 /**
  * This view is overlaid on top of the camera preview. It adds the viewfinder rectangle and partial

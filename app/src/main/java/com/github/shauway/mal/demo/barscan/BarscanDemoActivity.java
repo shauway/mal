@@ -8,7 +8,7 @@ import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
-import com.github.shauway.barscan.CaptureFragment;
+import com.github.shauway.mal.barscan.CaptureFragment;
 import com.github.shauway.mal.R;
 import com.google.zxing.Result;
 

@@ -1,4 +1,4 @@
-package com.github.shauway.barscan;
+package com.github.shauway.mal.barscan;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -22,7 +22,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.github.shauway.barscan.camera.CameraManager;
+import com.github.shauway.barscan.R;
+import com.github.shauway.mal.barscan.camera.CameraManager;
 import com.google.zxing.Result;
 
 import java.io.IOException;

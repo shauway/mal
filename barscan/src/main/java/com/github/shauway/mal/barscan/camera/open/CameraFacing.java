@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.shauway.barscan.camera.open;
+package com.github.shauway.mal.barscan.camera.open;
 
 /**
  * Enumeration of directions a camera may face: front or back.

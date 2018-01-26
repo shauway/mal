@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.shauway.barscan.camera;
+package com.github.shauway.mal.barscan.camera;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,8 +27,8 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
 
-import com.github.shauway.barscan.camera.open.CameraFacing;
-import com.github.shauway.barscan.camera.open.OpenCamera;
+import com.github.shauway.mal.barscan.camera.open.CameraFacing;
+import com.github.shauway.mal.barscan.camera.open.OpenCamera;
 
 
 /**

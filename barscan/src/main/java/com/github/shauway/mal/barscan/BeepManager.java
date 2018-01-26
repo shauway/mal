@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.shauway.barscan;
+package com.github.shauway.mal.barscan;
 
 import android.app.Activity;
 import android.content.Context;
@@ -24,6 +24,8 @@ import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.util.Log;
 
+
+import com.github.shauway.barscan.R;
 
 import java.io.Closeable;
 import java.io.IOException;

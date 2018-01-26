@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.shauway.barscan.camera;
+package com.github.shauway.mal.barscan.camera;
 
 import android.graphics.Point;
 import android.graphics.Rect;
