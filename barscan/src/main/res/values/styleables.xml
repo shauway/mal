@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CaptureFragment">
+        <attr name="framing_rect_center_top_offset" format="dimension" />
+        <attr name="beep" format="boolean" />
+        <attr name="vibrate" format="boolean" />
+        <attr name="viewfinder_name" format="string" />
+    </declare-styleable>
+
+</resources>

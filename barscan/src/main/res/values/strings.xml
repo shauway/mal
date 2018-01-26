@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">barscan</string>
+
+    <string name="button_cancel">取消</string>
+    <string name="button_ok">确定</string>
+    <string name="menu_settings">设置</string>
+    <string name="msg_camera_framework_bug">很遗憾，Android 相机出现问题。你可能需要重启设备。</string>
+    <string name="msg_default_status">请将条码置于取景框内扫描</string>
+    <string name="msg_error">错误</string>
+    <string name="msg_invalid_value">值无效</string>
+    <string name="camera_button_text">启动摄像头</string>
+</resources>

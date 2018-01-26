@@ -1,6 +1,10 @@
 [
   {
     "title": "系统权限Library",
-    "cls": "com.github.shauway.mal.demo.permission.PermissionDemoActivity2"
+    "cls": "com.github.shauway.mal.demo.permission.PermissionDemoActivity"
+  },
+  {
+    "title": "扫码Library",
+    "cls": "com.github.shauway.mal.demo.barscan.BarscanDemoActivity"
   }
 ]
