@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.shauway.barscan;
+package com.github.shauway.mal.barscan;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -22,7 +22,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-import com.github.shauway.barscan.camera.CameraManager;
+import com.github.shauway.mal.barscan.camera.CameraManager;
 
 /**
  * Detects ambient light and switches on the front light when very dark, and off again when sufficiently light.

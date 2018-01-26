@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.shauway.barscan;
+package com.github.shauway.mal.barscan;
 
 import android.content.res.Configuration;
 import android.os.Handler;
@@ -22,6 +22,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
+import com.github.shauway.barscan.R;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.PlanarYUVLuminanceSource;

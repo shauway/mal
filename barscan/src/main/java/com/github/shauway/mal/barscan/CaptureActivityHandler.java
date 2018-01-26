@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package com.github.shauway.barscan;
+package com.github.shauway.mal.barscan;
 
 import android.os.Handler;
 import android.os.Message;
 
+import com.github.shauway.barscan.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.github.shauway.barscan.camera.CameraManager;
+import com.github.shauway.mal.barscan.camera.CameraManager;
 
 import java.util.Collection;
 
