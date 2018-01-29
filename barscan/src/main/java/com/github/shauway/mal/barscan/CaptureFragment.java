@@ -82,16 +82,6 @@ public class CaptureFragment extends Fragment implements SurfaceHolder.Callback 
         systemUiVisibility |= flags;
         decor.setSystemUiVisibility(systemUiVisibility);
 
-        ActionBar actionBar = getActivity().getActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        } else {
-            android.support.v7.app.ActionBar supportActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-            if (supportActionBar != null) {
-                supportActionBar.hide();
-            }
-        }
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(Color.TRANSPARENT);
             window.setNavigationBarColor(Color.TRANSPARENT);
@@ -151,6 +141,16 @@ public class CaptureFragment extends Fragment implements SurfaceHolder.Callback 
     @Override
     public void onResume() {
         super.onResume();
+
+        ActionBar actionBar = getActivity().getActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        } else {
+            android.support.v7.app.ActionBar supportActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+            if (supportActionBar != null) {
+                supportActionBar.hide();
+            }
+        }
 
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
         cameraManager = new CameraManager(getActivity().getApplication(), surfaceHolder, this.framingRectCenterTopOffset);
@@ -288,10 +288,11 @@ public class CaptureFragment extends Fragment implements SurfaceHolder.Callback 
                 handler = new CaptureActivityHandler(this, null, null, cameraManager);
             }
         } catch (IOException ioe) {
-            Log.w(TAG, ioe);
             displayFrameworkBugMessageAndExit();
+            throw new RuntimeException(ioe);
         } catch (RuntimeException e) {
             displayFrameworkBugMessageAndExit();
+            throw e;
         }
     }
 

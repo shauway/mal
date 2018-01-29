@@ -37,7 +37,7 @@ import java.util.regex.Pattern;
 @SuppressWarnings("deprecation") // camera APIs
 public final class CameraConfigurationUtils {
 
-  private static final String TAG = CameraConfigurationUtils.class.getSimpleName();
+  private static final String TAG = "CameraConfigUtils";
 
   private static final Pattern SEMICOLON = Pattern.compile(";");
 
