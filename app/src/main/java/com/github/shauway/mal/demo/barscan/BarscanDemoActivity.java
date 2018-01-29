@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -20,6 +21,12 @@ public class BarscanDemoActivity extends AppCompatActivity implements CaptureFra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barscan_demo);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayShowCustomEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         captureFragment = (CaptureFragment) getSupportFragmentManager().findFragmentById(R.id.capture_fragment);
         viewGroup = findViewById(R.id.btn_container);

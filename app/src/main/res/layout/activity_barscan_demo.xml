@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.github.shauway.mal.demo.barscan.BarscanDemoActivity">
+
+    <include layout="@layout/app_bar_default" />
 
     <fragment
         android:id="@+id/capture_fragment"
@@ -15,4 +17,4 @@
         app:framing_rect_center_top_offset="20dp"
         app:vibrate="true" />
 
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

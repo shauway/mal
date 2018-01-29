@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.github.shauway.mal.R;
 import com.github.shauway.mal.demo.dummy.LibraryListContent;
@@ -28,7 +29,12 @@ public class MainActivity extends AppCompatActivity
                 transaction.replace(R.id.activity_main_fragment_container, libraryListFragment).commit();
             }
         }
-
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayShowCustomEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         checkForUpdates();
     }
 
