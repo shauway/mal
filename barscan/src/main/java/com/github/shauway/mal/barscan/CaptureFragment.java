@@ -56,6 +56,8 @@ public class CaptureFragment extends Fragment implements SurfaceHolder.Callback 
     private SurfaceView surfaceView;
     private ViewfinderView viewfinderView;
 
+    private boolean immersive;
+
 
     public CaptureFragment() {
     }
@@ -78,9 +80,11 @@ public class CaptureFragment extends Fragment implements SurfaceHolder.Callback 
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+                | View.SYSTEM_UI_FLAG_IMMERSIVE;
         systemUiVisibility |= flags;
         decor.setSystemUiVisibility(systemUiVisibility);
+
+        immersive = true;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(Color.TRANSPARENT);
@@ -108,6 +112,9 @@ public class CaptureFragment extends Fragment implements SurfaceHolder.Callback 
         surfaceView = new SurfaceView(getContext());
         root.addView(surfaceView);
         if (this.viewfinderView != null) {
+            viewfinderView.setOnClickListener(v -> {
+                CaptureFragment.this.toggleImmersive();
+            });
             root.addView(viewfinderView);
         }
         root.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
@@ -334,5 +341,24 @@ public class CaptureFragment extends Fragment implements SurfaceHolder.Callback 
     public void setFramingRectCenterTopOffset(int framingRectCenterTopOffset) {
         this.framingRectCenterTopOffset = framingRectCenterTopOffset;
         cameraManager.setFramingRectCenterTopOffset(this.framingRectCenterTopOffset);
+    }
+
+    private void toggleImmersive() {
+        Window window = getActivity().getWindow();
+        View decor = window.getDecorView();
+        int flags = 0;
+        if (immersive) {
+            flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE;
+        } else {
+            flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE;
+        }
+        decor.setSystemUiVisibility(flags);
+        immersive = !immersive;
     }
 }
