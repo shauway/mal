@@ -9,7 +9,6 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -31,6 +30,8 @@ public class PermissionManager {
     private final List<String> dangerousPermissions;
 
     private HashMap<String, String> permissionRationaleMessage;
+
+    private PermissionAllGrantedListener listener;
 
     protected static final ThreadLocal<PermissionManager> threadLocal = new ThreadLocal<>();
 
@@ -89,7 +90,15 @@ public class PermissionManager {
     }
 
     public void request(int requestCode) {
+        request(requestCode, null);
+    }
+
+    public void request(int requestCode, PermissionAllGrantedListener listener) {
+        this.listener = listener;
         if (isAllNeededPermissionsGranted()) {
+            if (listener != null) {
+                listener.onGranted(requestPermissionsActivity);
+            }
             return;
         }
         threadLocal.set(this);
@@ -104,6 +113,9 @@ public class PermissionManager {
         } else {
             permissionManagerActivity.setResult(Activity.RESULT_OK);
             permissionManagerActivity.finish();
+            if (listener != null) {
+                listener.onGranted(requestPermissionsActivity);
+            }
         }
     }
 
