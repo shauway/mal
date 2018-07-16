@@ -148,6 +148,9 @@ public class PermissionManager {
         if (isAllNeededPermissionsGranted()) {
             permissionManagerActivity.setResult(Activity.RESULT_OK);
             permissionManagerActivity.finish();
+            if (listener != null) {
+                listener.onGranted(requestPermissionsActivity);
+            }
         }
     }
 
